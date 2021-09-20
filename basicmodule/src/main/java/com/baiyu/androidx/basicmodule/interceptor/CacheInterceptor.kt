@@ -19,7 +19,7 @@ class CacheInterceptor(var day: Int = 30) : Interceptor {
                     .header("Cache-Control", "public, only-if-cached, max-stale=$maxStale")
                     .removeHeader("Pragma")
                     .build()
-            "cache request===${request.url}".logD("CacheInterceptor")
+            "cache request===${request.url()}".logD("CacheInterceptor")
         }
         return chain.proceed(request)
     }

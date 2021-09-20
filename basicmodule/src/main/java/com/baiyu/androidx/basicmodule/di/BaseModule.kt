@@ -50,11 +50,7 @@ val netWorkModule = module {
         OkHttpClient.Builder()
             .cache(Cache(File(BaseApp.CONTEXT.cacheDir, "okhttp_cache"), 1024 * 1024 * 256L))
             .addInterceptor(CacheInterceptor())
-            .addInterceptor(HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-                override fun log(message: String) {
-                    "msg=$message".logD("OkHttp")
-                }
-            }).apply {
+            .addInterceptor(HttpLoggingInterceptor { message -> "msg=$message".logD("OkHttp") }.apply {
                 this.level = HttpLoggingInterceptor.Level.BODY
             })    // 日志拦截器
             .addNetworkInterceptor(CacheNetworkInterceptor())

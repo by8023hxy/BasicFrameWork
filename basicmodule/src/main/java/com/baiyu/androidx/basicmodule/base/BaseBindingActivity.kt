@@ -17,6 +17,7 @@ abstract class BaseBindingActivity<T : ViewDataBinding> constructor(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         afterViews()
+        initObserver()
     }
 
     abstract fun afterViews()
