@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
-import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -23,9 +22,6 @@ import androidx.fragment.app.Fragment
 abstract class BindingFragment<T : ViewDataBinding> constructor(
   @LayoutRes private val contentLayoutId: Int
 ) : Fragment() {
-
-  /** This interface is generated during compilation to contain getters for all used instance `BindingAdapters`. */
-  protected var bindingComponent: DataBindingComponent? = DataBindingUtil.getDefaultComponent()
 
   /** A backing field for providing an immutable [binding] property.  */
   private var _binding: T? = null
@@ -60,7 +56,7 @@ abstract class BindingFragment<T : ViewDataBinding> constructor(
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    _binding = DataBindingUtil.inflate(inflater, contentLayoutId, container, false, bindingComponent)
+    _binding = DataBindingUtil.inflate(inflater, contentLayoutId, container, false)
     return binding.apply {
       lifecycleOwner=this@BindingFragment
     }.root

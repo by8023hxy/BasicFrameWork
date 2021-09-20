@@ -5,9 +5,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
-import com.baiyu.androidx.basicmodule.ShareViewModel
 import com.baiyu.androidx.basicmodule.di.baseModule
-import com.baiyu.androidx.basicmodule.di.netWorkModule
 import com.baiyu.androidx.basicmodule.ext.logD
 import com.tencent.mmkv.MMKV
 import org.koin.android.ext.koin.androidContext
@@ -31,8 +29,6 @@ open class BaseApp : Application(), ViewModelStoreOwner {
     companion object {
         @JvmStatic
         lateinit var CONTEXT: BaseApp
-        @JvmStatic
-        val shareViewModel: ShareViewModel by lazy { ShareViewModel() }
     }
 
     private lateinit var mAppViewModelStore: ViewModelStore

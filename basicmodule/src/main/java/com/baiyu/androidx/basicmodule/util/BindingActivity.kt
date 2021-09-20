@@ -2,7 +2,6 @@ package com.baiyu.androidx.basicmodule.util
 
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
@@ -10,8 +9,6 @@ abstract class BindingActivity<T : ViewDataBinding> constructor(
   @LayoutRes private val contentLayoutId: Int
 ) : AppCompatActivity() {
 
-  /** This interface is generated during compilation to contain getters for all used instance `BindingAdapters`. */
-  protected var bindingComponent: DataBindingComponent? = DataBindingUtil.getDefaultComponent()
 
   /**
    * A data-binding property will be initialized before being called [onCreate].
@@ -19,7 +16,7 @@ abstract class BindingActivity<T : ViewDataBinding> constructor(
    */
   @BindingOnly
   protected val binding: T by lazy(LazyThreadSafetyMode.NONE) {
-    DataBindingUtil.setContentView(this, contentLayoutId, bindingComponent)
+    DataBindingUtil.setContentView(this, contentLayoutId)
   }
 
   /**
