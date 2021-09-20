@@ -20,7 +20,6 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
                 getBannerList()
             }
         }
-        initObserver()
     }
 
     override fun initObserver() {
