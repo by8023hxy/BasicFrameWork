@@ -3,7 +3,6 @@
 package com.baiyu.androidx.basicmodule.di
 
 import com.baiyu.androidx.basicmodule.BaseConstant
-import com.baiyu.androidx.basicmodule.ShareViewModel
 import com.baiyu.androidx.basicmodule.base.BaseApp
 import com.baiyu.androidx.basicmodule.ext.logD
 import com.baiyu.androidx.basicmodule.interceptor.CacheInterceptor
@@ -30,9 +29,6 @@ import java.util.concurrent.TimeUnit
  * @description：Koin注入
  */
 val baseModule = module {
-    single {
-        ShareViewModel()
-    }
     single {
         MMKVUtil(get())
     }
